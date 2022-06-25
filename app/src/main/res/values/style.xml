@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NextButton">
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+    <style name="OperatorButton">
+        <item name="android:background">@drawable/operator_background</item>
+    </style>
+</resources>
