@@ -11,21 +11,23 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
     private lateinit var tasarim:ActivityMainBinding
+    var operator = "*"
+    var oldCount=""
+    var newOperator=true
     override fun onCreate(savedInstanceState: Bundle?) {
        tasarim=ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(tasarim.root)
-
     }
-
 
     fun btn_Click(view: View) {
         if (newOperator){
-            dataView.setText("")
+            tvResult.setText("")
         }
+        
         newOperator=false
         var btnSelect = view as Button
-        var btnClickValue:String = dataView.text.toString()
+        var btnClickValue:String = tvResult.text.toString()
         when(btnSelect.id){
             btnZero.id->{
                 btnClickValue+="0"
@@ -60,12 +62,10 @@ class MainActivity : AppCompatActivity(){
 
 
         }
-        dataView.setText(btnClickValue)
+        tvResult.setText(btnClickValue)
     }
 
-    var operator = "*"
-    var oldCount=""
-    var newOperator=true
+
     fun btn_Operator(view: View) {
         var btn_Select= view as Button
         when(btn_Select.id){
@@ -82,11 +82,11 @@ class MainActivity : AppCompatActivity(){
                 operator="+"
             }
         }
-        oldCount=dataView.text.toString()
+        oldCount=tvResult.text.toString()
         newOperator=true
     }
     fun Equals(view: View) {
-        var newCount=dataView.text.toString()
+        var newCount=tvResult.text.toString()
         var result:Double?=null
         when(operator){
             "/"->{
@@ -102,18 +102,19 @@ class MainActivity : AppCompatActivity(){
                 result=oldCount.toDouble()+newCount.toDouble()
             }
         }
-        dataView.setText(result.toString())
+        tasarim.tvResult.setText(result.toString())
         newOperator=true
 
     }
     fun Ac(view: View) {
-        dataView.setText("0")
+        tvResult.setText("0")
         newOperator=true
     }
-    fun Per(view: View) {
-        //sayi veri tipini double yaptık , edit textin ilk stringe sonra double cevirdik ve 100 e bolduk
-        var count:Double=dataView.text.toString().toDouble()/100
-        dataView.setText(count.toString())
+    fun Percent(view: View) {
+        //Kullanıcıdan alınan sayının veri tipi double yaptık ,
+        // edit text ilk stringe sonra double cevirildi 100 e bolündü
+        var count:Double=tvResult.text.toString().toDouble()/100
+        tasarim.tvResult.setText(count.toString())
         newOperator=true
     }
 

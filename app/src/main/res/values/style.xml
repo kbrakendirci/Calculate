@@ -6,4 +6,7 @@
     <style name="OperatorButton">
         <item name="android:background">@drawable/operator_background</item>
     </style>
+    <style name="ResultButton">
+        <item name="android:background">@drawable/result_background</item>
+    </style>
 </resources>
