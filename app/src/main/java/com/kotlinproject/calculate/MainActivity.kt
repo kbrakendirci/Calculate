@@ -12,19 +12,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(){
     private lateinit var tasarim:ActivityMainBinding
     var operator = "*"
-    var oldCount=""
+    var oldResult=""
     var newOperator=true
     override fun onCreate(savedInstanceState: Bundle?) {
        tasarim=ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(tasarim.root)
     }
-
+//Kullanılan Butonlara layout dosyasında onclick özelliği verilmiştir.
+// Verilen Onclick id'lere göre tuşların işlevleri tanımlanmıştır.
     fun btn_Click(view: View) {
         if (newOperator){
             tvResult.setText("")
         }
-        
+
         newOperator=false
         var btnSelect = view as Button
         var btnClickValue:String = tvResult.text.toString()
@@ -82,24 +83,24 @@ class MainActivity : AppCompatActivity(){
                 operator="+"
             }
         }
-        oldCount=tvResult.text.toString()
+        oldResult=tvResult.text.toString()
         newOperator=true
     }
     fun Equals(view: View) {
-        var newCount=tvResult.text.toString()
+        var newResult=tvResult.text.toString()
         var result:Double?=null
         when(operator){
             "/"->{
-                result=oldCount.toDouble()/newCount.toDouble()
+                result=oldResult.toDouble()/newResult.toDouble()
             }
             "*"->{
-                result=oldCount.toDouble()*newCount.toDouble()
+                result=oldResult.toDouble()*newResult.toDouble()
             }
             "-"->{
-                result=oldCount.toDouble()-newCount.toDouble()
+                result=oldResult.toDouble()-newResult.toDouble()
             }
             "+"->{
-                result=oldCount.toDouble()+newCount.toDouble()
+                result=oldResult.toDouble()+newResult.toDouble()
             }
         }
         tasarim.tvResult.setText(result.toString())
