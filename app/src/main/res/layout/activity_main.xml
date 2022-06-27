@@ -389,9 +389,11 @@
             android:layout_weight="1"
             android:onClick="btn_Click"
             android:shadowColor="#000000"
-            android:text="="
             android:textColor="#000000"
-            android:textSize="30sp" />
+            android:paddingLeft="20dp"
+            android:drawableLeft="@drawable/ic_baseline_backspace_24"
+            android:textSize="30sp" >
+                   </Button>
 
         <Button
             android:id="@+id/buttonEquals"
@@ -405,6 +407,8 @@
             android:text="="
             android:textColor="#000000"
             android:textSize="30sp" />
+
+
     </LinearLayout>
 
 
